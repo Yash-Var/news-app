@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     // Define the API URL you want to fetch data from
-    const apiUrl = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=3fd8604c90e845679b3352fb31ffc7b2&page=${number}`;
+    const apiUrl = `http://newsapi.org/v2/everything?q=bitcoin&apiKey=3fd8604c90e845679b3352fb31ffc7b2&page=${number}`;
 
     // Make an Axios GET request
     axios
@@ -129,7 +129,7 @@ function App() {
       // If a specific country is selected, fetch top headlines for that country
       setStartIndex(0);
 
-      apiUrl = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=3fd8604c90e845679b3352fb31ffc7b2`;
+      apiUrl = `http://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=3fd8604c90e845679b3352fb31ffc7b2`;
     } else {
       // If no specific country is selected, fetch general news with pagination
       apiUrl = `http://newsapi.org/v2/everything?q=bitcoin&apiKey=3fd8604c90e845679b3352fb31ffc7b2&page=${number}`;

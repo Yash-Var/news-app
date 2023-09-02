@@ -241,3 +241,16 @@ body {
     font-size: 1.5rem;
   }
 }
+
+.All-Cards{
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.Shimmer-card{
+  width: 300px;
+  height: 400px;
+  background-color: rgb(215, 213, 213);
+}

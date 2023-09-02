@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Country } from "country-state-city";
+import Shimmmer from "./Shimmer";
 
 const entriesPerPage = 12;
 function App() {
@@ -15,19 +16,14 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState("");
 
   useEffect(() => {
-    // Define the API URL you want to fetch data from
     const apiUrl = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=3fd8604c90e845679b3352fb31ffc7b2&page=${number}`;
 
-    // Make an Axios GET request
     axios
       .get(apiUrl)
       .then((response) => {
-        // Handle the successful response
-        // con(response);
         setData(response.data.articles);
       })
       .catch((error) => {
-        // Handle any errors that occurred during the request
         console.error("Error fetching data:", error);
       });
   }, []);
@@ -109,46 +105,36 @@ function App() {
   ];
 
   const handleSearchChange = (event) => {
-    // con(event.target.value);
     setSearchQuery(event.target.value);
   };
   const filteredNews = data?.filter((news) => {
     return news?.author?.toLowerCase().includes(searchQuery.toLowerCase());
   });
-  // con(filteredNews);
+
   const [countries, setCountries] = useState([]);
   useEffect(() => {
-    // Fetch countries using the library
     const countryData = Country.getAllCountries();
     setCountries(countryData);
   }, []);
   useEffect(() => {
-    // Define the API URL you want to fetch data from
     let apiUrl;
     if (selectedCountry) {
-      // If a specific country is selected, fetch top headlines for that country
       setStartIndex(0);
 
       apiUrl = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=3fd8604c90e845679b3352fb31ffc7b2`;
     } else {
-      // If no specific country is selected, fetch general news with pagination
       apiUrl = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=3fd8604c90e845679b3352fb31ffc7b2&page=${number}`;
     }
 
-    // Reset the currentPage to 1 whenever selectedCountry changes
     setCurrentPage(1);
 
-    // Make an Axios GET request
     axios
       .get(apiUrl)
       .then((response) => {
-        // Handle the successful response
-        // con(response);
         console.log(response);
         setData(response.data.articles);
       })
       .catch((error) => {
-        // Handle any errors that occurred during the request
         console.error("Error fetching data:", error);
       });
   }, [selectedCountry, number]);
@@ -188,14 +174,12 @@ function App() {
           <select
             className="country-select"
             onChange={(e) => {
-              // con(e.target.value);
               console.log(e.target.value);
               setSelectedCountry(e.target.value);
             }}
           >
             <option value="">Select a country</option>
             {countries?.map((country, index) => (
-              // console.log(country),
               <option key={index} value={country.isoCode}>
                 {country.name}
               </option>
@@ -212,7 +196,7 @@ function App() {
               News not found for the selected country
             </h1>
           ) : (
-            <h1>No data</h1>
+            <Shimmmer />
           )
         ) : (
           <div className="divider">

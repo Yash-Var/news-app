@@ -41,16 +41,14 @@ body {
   outline: none;
 }
 
-.country-select {
-  width: 50%;
-}
+
 
 .news-container {
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  margin: 0 20rem;
+  margin: 2rem 10rem;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -122,12 +120,12 @@ body {
   }
 
   .divider {
-    margin: 0 5px;
     flex-direction: column;
+    align-items: center;
   }
 
   .news-item {
-    width: 45%;
+    width: 75% !important;
     margin-right: 10px;
     height: auto;
   }
@@ -170,5 +168,76 @@ body {
     width: 100%;
     margin-right: 0;
     height: auto;
+  }
+}
+
+/* In App.css */
+.author-text {
+  margin-top: 1rem;
+  color: #ea2760; /* Change this to the desired text color */
+}
+/* In App.css */
+
+.previous-btn, .next-btn{
+  background-color: transparent;
+  border: 0px;
+  color: #623ec9;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  
+  cursor: pointer;
+  font-size: 2rem;
+}
+.previous-btn:hover, .next-btn:hover{
+  color: #432b86;
+}
+.previous-btn:disabled,.next-btn:disabled{
+  color: #633ec96f;
+  cursor: default;
+}
+.pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 1800px) {
+  .news-item{
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1653px) {
+  .news-item{
+    width: 31%;
+  }
+}
+@media screen and (max-width: 1216px) {
+  .news-item{
+    width: 40%;
+  }
+}
+@media screen and (max-width: 939px) {
+  .news-item{
+    width: 47%;
+  }
+  .news-container{
+    margin: 2rem 5rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .news-item{
+    width: 95% !important;
+  }
+  .news-container{
+    margin: 2rem 2rem !important;
+  }
+  .previous-btn, .next-btn{
+    font-size: 1.5rem;
+  }
+  .pagination{
+    font-size: 1.5rem;
   }
 }

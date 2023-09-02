@@ -132,7 +132,7 @@ function App() {
       apiUrl = `https://newsapi.org/v2/top-headlines?country=${selectedCountry}&apiKey=3fd8604c90e845679b3352fb31ffc7b2`;
     } else {
       // If no specific country is selected, fetch general news with pagination
-      apiUrl = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=3fd8604c90e845679b3352fb31ffc7b2&page=${number}`;
+      apiUrl = `http://newsapi.org/v2/everything?q=bitcoin&apiKey=3fd8604c90e845679b3352fb31ffc7b2&page=${number}`;
     }
 
     // Reset the currentPage to 1 whenever selectedCountry changes
